@@ -1,9 +1,28 @@
 {
   "name": "oc-p14-hrnet",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "author": "miervaldis42",
+  "description": "HRnet - A React project to manage employees in a company.",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miervaldis42/oc-p14-hrnet.git"
+  },
+  "keywords": [
+    "p14",
+    "openClassrooms",
+    "oc",
+    "react",
+    "next.js",
+    "next",
+    "node"
+  ],
+  "bugs": {
+    "url": "https://github.com/miervaldis42/oc-p14-hrnet/issues"
+  },
+  "homepage": "https://github.com/miervaldis42/oc-p14-hrnet#readme",
   "scripts": {
-    "dev": "next dev",
+    "dev": "start http://localhost:3000 & next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
