@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Light Mode
+*/
+:root {
+  --theme-background: white;
+  --theme-color: black;
+}
+
+/*
+  Dark Mode
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-background: black;
+    --theme-color: white;
+  }
+}
