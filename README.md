@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# OpenClassrooms - Project 14
 
-## Getting Started
+_This project is the **14th** project of OpenClassrooms' "JavaScript - React Developer" Program._
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [🎯 Project Goal](#-project-goal)
+- [🧑‍💻 Stack](#-stack)
+- [🚀 Run the Project](#-run-the-project)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Project Goal
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The objective is to **_convert a jQuery project into a React one_** and to create a **_React-based `npm` package_**.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🧑‍💻 Stack
 
-## Learn More
+Here is the stack used in the project :
 
-To learn more about Next.js, take a look at the following resources:
+💻 **Frameworks**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [React v18](https://react.dev/)
+- [Next v14](https://nextjs.org/docs/)
+  - [TypeScript](https://www.typescriptlang.org/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+🖼️ **CSS**
 
-## Deploy on Vercel
+- [PostCSS](https://postcss.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Run the Project
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clone the repo from this link : [P14 repo](https://github.com/miervaldis42/oc-p14-hrnet)
+2. In a terminal, run `npm i`, then `npm run build` and finally, `npm start`
+
+🎉 **_Congrats ! The website is up and running at [localhost:3000](http://localhost:3000/) in production mode !_**
