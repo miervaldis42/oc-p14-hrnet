@@ -26,6 +26,8 @@
   "scripts": {
     "dev": "start http://localhost:3000 & next dev --turbo",
     "test": "vitest",
+    "test:e2e": "npx playwright test",
+    "test:e2e-report": "npx playwright show-report tests/e2e/playwright-report",
     "lint": "next lint",
     "build": "next build",
     "start": "next start"
