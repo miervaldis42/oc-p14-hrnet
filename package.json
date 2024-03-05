@@ -25,9 +25,10 @@
   "homepage": "https://github.com/miervaldis42/oc-p14-hrnet#readme",
   "scripts": {
     "dev": "start http://localhost:3000 & next dev --turbo",
+    "test": "vitest",
+    "lint": "next lint",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "react": "^18",
