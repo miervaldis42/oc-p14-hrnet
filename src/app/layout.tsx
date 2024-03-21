@@ -1,16 +1,16 @@
 // Imports
 import { ReactNode } from "react";
 
+// Components
+import ReduxProvider from "@store/ReduxProvider";
+
 // Stylings
 import "./globals.css";
 import { EB_Garamond as MainFont } from "next/font/google";
 const ebGaramondFont = MainFont({ subsets: ["latin"], weight: "400" });
 
 /**
- * @description The main layout of the website and main place to apply global stylings.
- *
- * @param
- * @returns RootLayout
+ * Main Layout
  */
 export default function RootLayout({
   children,
@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ebGaramondFont.className} flex`}>{children}</body>
+      <ReduxProvider>
+        <body className={`${ebGaramondFont.className} flex`}>{children}</body>
+      </ReduxProvider>
     </html>
   );
 }
