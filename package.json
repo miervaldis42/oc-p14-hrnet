@@ -1,6 +1,6 @@
 {
   "name": "oc-p14-hrnet",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "miervaldis42",
   "description": "HRnet - A React project to manage employees in a company.",
   "private": true,
@@ -20,7 +20,8 @@
     "tailwindcss",
     "testing",
     "testingLibrary",
-    "playwright"
+    "playwright",
+    "reduxToolkit"
   ],
   "bugs": {
     "url": "https://github.com/miervaldis42/oc-p14-hrnet/issues"
