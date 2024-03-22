@@ -24,6 +24,7 @@
       "@/*": ["*"],
       "@customTypes/*": ["types/*"],
       "@assets/*": ["assets/*"],
+      "@store/*": ["store/*"],
       "@router/*": ["router/*"],
       "@components/*": ["components/*"],
       "@app/*": ["app/*"]
