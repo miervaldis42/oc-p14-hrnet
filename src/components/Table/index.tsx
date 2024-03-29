@@ -1,15 +1,17 @@
 "use client";
 
 // Imports
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   Table,
   useReactTable,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
+  SortingState,
 } from "@tanstack/react-table";
-import { useSelector } from "react-redux";
-import { useState } from "react";
 
 // Types
 import { EmployeeType, EmployeesType } from "@customTypes/employeeType";
@@ -30,7 +32,7 @@ function Table() {
 
   // Formatting
   const formatDate = (date: Date | null) => {
-    return date !== null && date !== undefined && typeof date === "object"
+    return !!date && typeof date === "object"
       ? date.toLocaleDateString("fr-FR")
       : "--/--/----";
   };
@@ -38,6 +40,10 @@ function Table() {
   /*
     Table Options
   */
+
+  // Sorting Feature
+  const [sorting, setSorting] = useState<SortingState>([]);
+
   // Columns
   const columnHelper = createColumnHelper<EmployeeType>();
   const customColumns = [
@@ -92,7 +98,13 @@ function Table() {
   const customTable = useReactTable({
     columns: customColumns,
     data: employees,
+    state: {
+      sorting,
+    },
     getCoreRowModel: getCoreRowModel(),
+    enableSorting: true,
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
   });
 
   return (
@@ -104,10 +116,21 @@ function Table() {
               return (
                 <th key={header.id} colSpan={header.colSpan}>
                   {header.isPlaceholder ? null : (
-                    <div>
+                    <div
+                      onClick={header.column.getToggleSortingHandler()}
+                      className={
+                        header.column.getCanSort() ? "cursor-pointer" : ""
+                      }
+                    >
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
+                      )}
+                      {{
+                        asc: " 🔼",
+                        desc: " 🔽",
+                      }[header.column.getIsSorted().toString()] ?? (
+                        <span className="text-xs">🔼🔽</span>
                       )}
                     </div>
                   )}
@@ -124,7 +147,7 @@ function Table() {
             <tr key={row.id}>
               {row.getVisibleCells().map((cell) => {
                 return (
-                  <td key={cell.id}>
+                  <td key={cell.id} className="text-center">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 );
