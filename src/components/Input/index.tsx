@@ -8,14 +8,14 @@ type CustomInputPropsType = {
   idName: string;
   hasLabel?: boolean;
   labelContent?: string;
-  type: "text";
+  type: "text" | "number";
   placeholder?: string;
-  value: string;
+  value: string | number;
   onChangeHandler?: ChangeEventHandler<HTMLInputElement>;
   onClickHandler?: MouseEventHandler<HTMLButtonElement>;
   stylingInputGroup?: string;
   stylingInput?: string;
-  hasButton: boolean;
+  hasButton?: boolean;
   stylingButton?: string;
   iconName?: IconNameTypes;
   stylingIcon?: string;

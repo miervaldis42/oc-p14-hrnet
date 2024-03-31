@@ -11,6 +11,8 @@ import {
   getCoreRowModel,
   getSortedRowModel,
   SortingState,
+  getPaginationRowModel,
+  PaginationState,
 } from "@tanstack/react-table";
 
 // Components
@@ -44,6 +46,12 @@ function Table() {
   /*
     Table Options
   */
+  // Pagination Feature
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 10,
+  });
+  const paginationPageNumberOptions = [10, 20, 30, 40, 50];
 
   // Sorting Feature
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -157,33 +165,58 @@ function Table() {
     data: tableData,
     state: {
       sorting,
+      pagination,
     },
     getCoreRowModel: getCoreRowModel(),
     enableSorting: true,
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
+    getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
   });
 
   return (
     <>
-      <CustomInput
-        idName={"searchInput"}
-        type={"text"}
-        placeholder={"Search among all columns..."}
-        value={userSearchKeywords ?? ""}
-        onChangeHandler={inputChangeHandler}
-        onClickHandler={searchHandler}
-        stylingInputGroup={"w-auto h-auto flex justify-end items-center mb-4"}
-        stylingInput={
-          "w-56 font-lg placeholder-opacity-50 shadow border border-block rounded-l-md px-4 py-2"
-        }
-        hasButton={true}
-        stylingButton={
-          "w-10 h-10 group flex justify-center items-center bg-primary shadow rounded-r-md hover:text-2xl hover:bg-blue-800"
-        }
-        iconName={"magnifier"}
-        stylingIcon={"text-white"}
-      />
+      <section
+        aria-label="Contains a setting to change the number of results to display per page and the global search bar."
+        className="flex justify-between items-center"
+      >
+        <p>
+          Show{" "}
+          <select
+            value={customTable.getState().pagination.pageSize}
+            onChange={(e) => {
+              customTable.setPageSize(Number(e.target.value));
+            }}
+          >
+            {paginationPageNumberOptions.map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                {pageSize}
+              </option>
+            ))}
+          </select>{" "}
+          results per page
+        </p>
+
+        <CustomInput
+          idName={"searchInput"}
+          type={"text"}
+          placeholder={"Search among all columns..."}
+          value={userSearchKeywords ?? ""}
+          onChangeHandler={inputChangeHandler}
+          onClickHandler={searchHandler}
+          stylingInputGroup={"w-auto h-auto flex justify-end items-center mb-4"}
+          stylingInput={
+            "w-56 font-lg placeholder-opacity-50 shadow border border-block rounded-l-md px-4 py-2"
+          }
+          hasButton={true}
+          stylingButton={
+            "w-10 h-10 group flex justify-center items-center bg-primary shadow rounded-r-md hover:text-2xl hover:bg-blue-800"
+          }
+          iconName={"magnifier"}
+          stylingIcon={"text-white"}
+        />
+      </section>
 
       <table>
         <thead>
@@ -237,6 +270,71 @@ function Table() {
           })}
         </tbody>
       </table>
+
+      <section
+        aria-label="Pagination action buttons & indicators."
+        className="flex justify-between items-center mt-2 mb-8"
+      >
+        <div
+          aria-label="Action buttons to move back and forth across the table pages."
+          className="flex gap-4"
+        >
+          <button
+            className="border rounded p-1"
+            onClick={() => customTable.firstPage()}
+            disabled={!customTable.getCanPreviousPage()}
+          >
+            {"<<"}
+          </button>
+          <button
+            className="border rounded p-1"
+            onClick={() => customTable.previousPage()}
+            disabled={!customTable.getCanPreviousPage()}
+          >
+            {"<"}
+          </button>
+          <button
+            className="border rounded p-1"
+            onClick={() => customTable.nextPage()}
+            disabled={!customTable.getCanNextPage()}
+          >
+            {">"}
+          </button>
+          <button
+            className="border rounded p-1"
+            onClick={() => customTable.lastPage()}
+            disabled={!customTable.getCanNextPage()}
+          >
+            {">>"}
+          </button>
+        </div>
+
+        <div className="flex items-center gap-1">
+          <p>
+            Page{" "}
+            <strong>
+              {customTable.getState().pagination.pageIndex + 1} of{" "}
+              {customTable.getPageCount().toString()}
+            </strong>
+          </p>
+        </div>
+
+        <div className="flex items-center gap-1">
+          <p>Go to page: </p>
+          <CustomInput
+            idName={"pageNumber"}
+            type={"number"}
+            value={customTable.getState().pagination.pageIndex + 1}
+            onChangeHandler={(e) => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0;
+
+              customTable.setPageIndex(page);
+            }}
+            stylingInput="w-12 border shadow rounded p-1"
+            hasButton={false}
+          />
+        </div>
+      </section>
     </>
   );
 }
