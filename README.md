@@ -28,6 +28,10 @@ Here is the stack used in the project :
 - [PostCSS](https://postcss.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 
+🧰 **Tools**
+
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+
 🔎 **Testings**
 
 - Unit Tests
