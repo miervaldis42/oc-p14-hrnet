@@ -16,15 +16,16 @@ import {
 } from "@tanstack/react-table";
 
 // Components
-import CustomInput from "../Input";
+import CustomInput from "../Form/Input";
 
 // Routing
+import Link from "next/link";
 import routes from "@router/routes";
 
 // Types
 import { EmployeeType, EmployeesType } from "@customTypes/employeeType";
 import { StateType } from "@store/index";
-import Link from "next/link";
+import Button from "../Button";
 
 /**
  * @name Table
@@ -316,34 +317,38 @@ function Table() {
               aria-label="Action buttons to move back and forth across the table pages."
               className="flex gap-4"
             >
-              <button
-                onClick={() => customTable.firstPage()}
+              <Button
+                type={"button"}
+                clickHandler={() => customTable.firstPage()}
                 disabled={!customTable.getCanPreviousPage()}
-                className="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
+                styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
               >
                 {"<<"}
-              </button>
-              <button
-                onClick={() => customTable.previousPage()}
+              </Button>
+              <Button
+                type={"button"}
+                clickHandler={() => customTable.previousPage()}
                 disabled={!customTable.getCanPreviousPage()}
-                className="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
+                styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
               >
                 {"<"}
-              </button>
-              <button
-                onClick={() => customTable.nextPage()}
+              </Button>
+              <Button
+                type={"button"}
+                clickHandler={() => customTable.nextPage()}
                 disabled={!customTable.getCanNextPage()}
-                className="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
+                styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
               >
                 {">"}
-              </button>
-              <button
-                onClick={() => customTable.lastPage()}
+              </Button>
+              <Button
+                type={"button"}
+                clickHandler={() => customTable.lastPage()}
                 disabled={!customTable.getCanNextPage()}
-                className="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
+                styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
               >
                 {">>"}
-              </button>
+              </Button>
             </div>
 
             {customTable.getPageCount() > 1 && (

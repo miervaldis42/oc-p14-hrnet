@@ -1,5 +1,6 @@
 // Components
-import CustomIcon from "../Icon";
+import CustomIcon from "@components/Icon";
+import Button from "@components/Button";
 
 // Types
 import { ChangeEventHandler, MouseEventHandler } from "react";
@@ -10,7 +11,13 @@ type CustomInputPropsType = {
   labelContent?: string;
   type: "text" | "number";
   placeholder?: string;
-  value: string | number;
+  autoCompleteText?:
+    | "give-name"
+    | "family-name"
+    | "street-address"
+    | "address-level2"
+    | "postal-code";
+  value?: string | number;
   onChangeHandler?: ChangeEventHandler<HTMLInputElement>;
   onClickHandler?: MouseEventHandler<HTMLButtonElement>;
   stylingInputGroup?: string;
@@ -35,7 +42,7 @@ function CustomInput({
   labelContent = idName,
   type,
   placeholder,
-  value = "",
+  value,
   onChangeHandler,
   onClickHandler,
   stylingInputGroup,
@@ -59,10 +66,14 @@ function CustomInput({
         className={stylingInput}
       />
 
-      {hasButton && (
-        <button onClick={onClickHandler} className={stylingButton}>
+      {hasButton && !!onClickHandler && (
+        <Button
+          type={"button"}
+          clickHandler={onClickHandler}
+          styling={stylingButton}
+        >
           <CustomIcon name={iconName} styling={stylingIcon} />
-        </button>
+        </Button>
       )}
     </div>
   );
