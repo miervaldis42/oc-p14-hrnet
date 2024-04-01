@@ -13,7 +13,12 @@ import routes from "@router/routes";
 
 // Components
 import Input from "./Input";
+import Select from "./Select";
 import Button from "../Button";
+
+// Constants
+import { STATENAMES } from "@constants/stateList";
+import DEPARTMENTS from "@constants/departmentList";
 
 // Types
 import { EmployeeType } from "@customTypes/employeeType";
@@ -111,6 +116,13 @@ function NewEmployeeForm(): JSX.Element {
           stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
         />
 
+        <Select
+          id={"states"}
+          labelContent={"State"}
+          optionsList={STATENAMES}
+          stylingSelectGroup="mb-4"
+        />
+
         <Input
           hasLabel={true}
           labelContent={"Zip Code"}
@@ -121,6 +133,13 @@ function NewEmployeeForm(): JSX.Element {
           stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
         />
       </fieldset>
+
+      <Select
+        id={"departments"}
+        labelContent={"Department"}
+        optionsList={DEPARTMENTS}
+        stylingSelectGroup="mt-4"
+      />
 
       <Button type={"submit"}>Create Employee</Button>
     </form>
