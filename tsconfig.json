@@ -23,6 +23,7 @@
     "paths": {
       "@/*": ["*"],
       "@customTypes/*": ["types/*"],
+      "@constants/*": ["constants/*"],
       "@assets/*": ["assets/*"],
       "@store/*": ["store/*"],
       "@router/*": ["router/*"],
