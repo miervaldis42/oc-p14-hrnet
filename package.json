@@ -10,12 +10,14 @@
   },
   "keywords": [
     "p14",
-    "openClassrooms",
+    "openclassrooms",
     "oc",
     "react",
     "next.js",
     "next",
-    "node"
+    "node",
+    "typescript",
+    "tailwindcss"
   ],
   "bugs": {
     "url": "https://github.com/miervaldis42/oc-p14-hrnet/issues"
