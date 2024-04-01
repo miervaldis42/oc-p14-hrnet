@@ -9,11 +9,12 @@ type CustomInputPropsType = {
   idName: string;
   hasLabel?: boolean;
   labelContent?: string;
-  type: "text" | "number";
+  type: "text" | "number" | "date";
   placeholder?: string;
   autoCompleteText?:
     | "give-name"
     | "family-name"
+    | "bday"
     | "street-address"
     | "address-level2"
     | "postal-code";

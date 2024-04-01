@@ -92,6 +92,15 @@ function NewEmployeeForm(): JSX.Element {
         stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
       />
 
+      <Input
+        idName={"birthdateInput"}
+        hasLabel={true}
+        labelContent={"Date of Birth"}
+        type={"date"}
+        autoCompleteText={"bday"}
+        stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
+      />
+
       {/* Address */}
       <fieldset className="border-solid border-2 border-primary py-2 px-4">
         <legend className="px-2">Address</legend>
@@ -139,6 +148,14 @@ function NewEmployeeForm(): JSX.Element {
         labelContent={"Department"}
         optionsList={DEPARTMENTS}
         stylingSelectGroup="mt-4"
+      />
+
+      <Input
+        idName={"startDateInput"}
+        hasLabel={true}
+        labelContent={"Start Date"}
+        type={"date"}
+        stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 my-4 ml-2"
       />
 
       <Button type={"submit"}>Create Employee</Button>
