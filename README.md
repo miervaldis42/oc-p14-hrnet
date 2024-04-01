@@ -27,10 +27,12 @@ Here is the stack used in the project :
 
 - [PostCSS](https://postcss.org/)
 - [TailwindCSS](https://tailwindcss.com/)
+- [react-icons](https://react-icons.github.io/react-icons/)
 
 🧰 **Tools**
 
 - [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Tanstack Table](https://tanstack.com/table/latest)
 
 🔎 **Testings**
 
