@@ -21,7 +21,10 @@
     "testing",
     "testingLibrary",
     "playwright",
-    "reduxToolkit"
+    "reduxToolkit",
+    "tanstack",
+    "tanstack table",
+    "react-icons"
   ],
   "bugs": {
     "url": "https://github.com/miervaldis42/oc-p14-hrnet/issues"
