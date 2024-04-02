@@ -1,6 +1,6 @@
 {
   "name": "oc-p14-hrnet",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "miervaldis42",
   "description": "HRnet - A React project to manage employees in a company.",
   "private": true,
