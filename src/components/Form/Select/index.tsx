@@ -1,5 +1,5 @@
 // Imports
-import { ChangeEventHandler, Children } from "react";
+import { Children } from "react";
 
 // Components
 import CustomIcon from "@components/Icon";
@@ -12,7 +12,6 @@ interface CustomSelectProps {
   id: string;
   labelContent: string;
   isRequired?: boolean;
-  onChangeHandler: ChangeEventHandler<HTMLSelectElement>;
   optionsList: Array<StateNameType | DepartmentType>;
 }
 
@@ -29,7 +28,6 @@ function CustomSelect({
   labelContent,
   isRequired = false,
   optionsList,
-  onChangeHandler,
   stylingSelectGroup,
 }: CustomSelectProps): JSX.Element {
   return (
@@ -41,12 +39,7 @@ function CustomSelect({
         )}
       </label>
 
-      <select
-        id={id}
-        name={id}
-        required={isRequired}
-        onChange={onChangeHandler}
-      >
+      <select id={id} name={id} required={isRequired}>
         {Children.toArray(
           optionsList.map((option) => (
             <option value={option.toString()}>{option.toString()}</option>
