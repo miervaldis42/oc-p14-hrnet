@@ -1,8 +1,17 @@
+// Imports
+import { IconNameTypes } from "@assets/iconLibrary";
+
 // Types
 interface RouteType {
   name: string;
   path: string | (() => string);
 }
+interface NavLinkType {
+  name: string;
+  icon: IconNameTypes;
+  path: string | (() => string);
+}
+type NavLinksType = Array<NavLinkType>;
 
 /**
  * @name routes
@@ -24,7 +33,7 @@ const routes: Record<string, RouteType> = {
     },
   },
   newEmployee: {
-    name: "Add Employee",
+    name: "New Employee",
     path: function () {
       const routePath = routes.employeeList.path;
 
@@ -35,5 +44,26 @@ const routes: Record<string, RouteType> = {
   },
 };
 
+const navLinkList: NavLinksType = [
+  {
+    name: "Employee List",
+    icon: "peopleList",
+    path: function () {
+      return `${routes.authenticated.path}/employees`;
+    },
+  },
+  {
+    name: "New Employee",
+    icon: "newPerson",
+    path: function () {
+      const routePath = routes.employeeList.path;
+
+      return typeof routePath === "function"
+        ? `${routePath()}/new`
+        : `${routePath}/new`;
+    },
+  },
+];
+
 export type { RouteType };
-export default routes;
+export { routes, navLinkList };

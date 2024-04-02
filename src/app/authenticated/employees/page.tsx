@@ -10,11 +10,11 @@ import Table from "@components/Table";
  */
 function Page(): JSX.Element {
   return (
-    <section>
+    <>
       <DynamicHeading type="h2">Current Employees List</DynamicHeading>
 
       <Table />
-    </section>
+    </>
   );
 }
 

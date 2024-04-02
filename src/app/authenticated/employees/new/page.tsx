@@ -10,11 +10,11 @@ import Form from "@components/Form";
  */
 function Page(): JSX.Element {
   return (
-    <section className="my-4 mx-8">
+    <>
       <DynamicHeading type="h2">New Employee</DynamicHeading>
 
       <Form />
-    </section>
+    </>
   );
 }
 

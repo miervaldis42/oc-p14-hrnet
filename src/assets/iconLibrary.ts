@@ -1,10 +1,12 @@
 // React Icons Project List
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaStarOfLife } from "react-icons/fa6";
+import { FaUserPlus } from "react-icons/fa6";
+import { FaIdBadge } from "react-icons/fa6";
 
 // Types
 import { IconType } from "react-icons/lib";
-type IconNameTypes = "magnifier" | "star";
+type IconNameTypes = "magnifier" | "star" | "newPerson" | "peopleList";
 
 /**
  * @name iconLibrary
@@ -16,6 +18,8 @@ type IconNameTypes = "magnifier" | "star";
 const iconLibrary: { [key: string]: IconType } = {
   magnifier: FaMagnifyingGlass,
   star: FaStarOfLife,
+  newPerson: FaUserPlus,
+  peopleList: FaIdBadge,
 };
 
 export type { IconNameTypes };

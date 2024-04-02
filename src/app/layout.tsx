@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 
 // Components
 import ReduxProvider from "@store/ReduxProvider";
+import Sidebar from "@components/Sidebar";
 
 // Stylings
 import "./globals.css";
@@ -20,7 +21,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ReduxProvider>
-        <body className={`${ebGaramondFont.className} flex`}>{children}</body>
+        <body
+          className={`${ebGaramondFont.className} w-screen h-screen flex overflow-hidden`}
+        >
+          <>
+            <Sidebar />
+
+            <section className="w-full h-full px-16 py-6 overflow-y-auto">
+              {children}
+            </section>
+          </>
+        </body>
       </ReduxProvider>
     </html>
   );
