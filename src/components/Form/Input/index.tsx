@@ -6,7 +6,7 @@ import Button from "@components/Button";
 import { ChangeEventHandler, MouseEventHandler } from "react";
 import { IconNameTypes } from "@assets/iconLibrary";
 type CustomInputPropsType = {
-  idName: string;
+  id: string;
   hasLabel?: boolean;
   labelContent?: string;
   isRequired?: boolean;
@@ -39,9 +39,9 @@ type CustomInputPropsType = {
  * @returns
  */
 function CustomInput({
-  idName,
+  id,
   hasLabel = false,
-  labelContent = idName,
+  labelContent = id,
   isRequired = false,
   type,
   placeholder,
@@ -58,7 +58,7 @@ function CustomInput({
   return (
     <div className={stylingInputGroup}>
       <label
-        htmlFor={idName}
+        htmlFor={id}
         className={`${hasLabel ? "visible" : "hidden"} flex items-center`}
       >
         {labelContent}
@@ -68,7 +68,8 @@ function CustomInput({
       </label>
 
       <input
-        id={idName}
+        id={id}
+        name={id}
         type={type}
         required={isRequired}
         placeholder={placeholder}

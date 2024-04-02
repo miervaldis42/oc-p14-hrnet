@@ -235,7 +235,7 @@ function Table() {
             </p>
 
             <CustomInput
-              idName={"searchInput"}
+              id={"searchInput"}
               type={"text"}
               placeholder={"Search among all columns..."}
               value={userSearchKeywords ?? ""}
@@ -366,7 +366,7 @@ function Table() {
                 <div className="flex items-center gap-1">
                   <p>Go to page: </p>
                   <CustomInput
-                    idName={"pageNumber"}
+                    id={"pageNumber"}
                     type={"number"}
                     value={customTable.getState().pagination.pageIndex + 1}
                     onChangeHandler={(e) => {
