@@ -20,7 +20,7 @@ import CustomInput from "../Form/Input";
 
 // Routing
 import Link from "next/link";
-import routes from "@router/routes";
+import { routes } from "@router/routes";
 
 // Types
 import { EmployeeType, EmployeesType } from "@customTypes/employeeType";
@@ -188,7 +188,7 @@ function Table() {
   return (
     <section
       aria-label="Everything related to the list of current employees."
-      className="flex flex-col justify-between px-8"
+      className="flex flex-col justify-between"
     >
       {/* Modify the content of the section based on the size of the store state */}
       {employees.length === 0 ? (
@@ -214,8 +214,8 @@ function Table() {
       ) : (
         <>
           <section
-            aria-label="Contains a setting to change the number of results to display per page and the global search bar."
-            className="flex justify-between items-center"
+            aria-label="Contains settings to change the number of results to display per page and the global search bar."
+            className="flex justify-between items-center mb-8"
           >
             <p>
               Show{" "}
@@ -231,7 +231,7 @@ function Table() {
                   </option>
                 ))}
               </select>{" "}
-              results per page
+              entries
             </p>
 
             <CustomInput
@@ -241,9 +241,7 @@ function Table() {
               value={userSearchKeywords ?? ""}
               onChangeHandler={inputChangeHandler}
               onClickHandler={searchHandler}
-              stylingInputGroup={
-                "w-auto h-auto flex justify-end items-center mb-4"
-              }
+              stylingInputGroup={"w-auto h-auto flex justify-end items-center"}
               stylingInput={
                 "w-56 font-lg placeholder-opacity-50 shadow-inner border border-block rounded-l-md px-4 py-2"
               }
@@ -257,7 +255,7 @@ function Table() {
           </section>
 
           <table>
-            <thead>
+            <thead className="border-solid border-b-2 border-primary">
               {customTable.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
@@ -266,14 +264,17 @@ function Table() {
                         {header.isPlaceholder ? null : (
                           <div
                             onClick={header.column.getToggleSortingHandler()}
-                            className={
-                              header.column.getCanSort() ? "cursor-pointer" : ""
-                            }
+                            className={`
+                              text-lg pb-1 ${
+                                header.column.getCanSort()
+                                  ? "cursor-pointer"
+                                  : ""
+                              }`}
                           >
                             {flexRender(
                               header.column.columnDef.header,
                               header.getContext()
-                            )}
+                            )}{" "}
                             {{
                               asc: " 🔼",
                               desc: " 🔽",
@@ -292,10 +293,10 @@ function Table() {
             <tbody>
               {customTable.getRowModel().rows.map((row) => {
                 return (
-                  <tr key={row.id}>
+                  <tr key={row.id} className="hover:bg-primary/20 rounded-sm">
                     {row.getVisibleCells().map((cell) => {
                       return (
-                        <td key={cell.id} className="text-center">
+                        <td key={cell.id} className="text-center p-3">
                           {flexRender(
                             cell.column.columnDef.cell,
                             cell.getContext()
@@ -311,7 +312,7 @@ function Table() {
 
           <section
             aria-label="Pagination action buttons & indicators."
-            className="flex justify-between items-center mt-2 mb-8"
+            className="flex justify-between items-center mt-4 mb-6"
           >
             <div
               aria-label="Action buttons to move back and forth across the table pages."

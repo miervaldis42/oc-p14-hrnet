@@ -6,7 +6,7 @@ import { add } from "@store/employeesSlice";
 
 // Routing
 import { useRouter } from "next/navigation";
-import routes from "@router/routes";
+import { routes } from "@router/routes";
 
 // Components
 import Input from "./Input";
@@ -74,41 +74,49 @@ function NewEmployeeForm(): JSX.Element {
   return (
     <form action={submitHandler} className="flex flex-col">
       {/* Employee Full Name */}
-      <Input
-        id={"firstname"}
-        hasLabel
-        labelContent={"First Name"}
-        isRequired
-        type={"text"}
-        placeholder={"Sherlock"}
-        autoCompleteText={"give-name"}
-        stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
-      />
+      <fieldset className="flex justify-between border-solid border-2 border-primary py-3 px-8 mt-6">
+        <legend className="text-lg font-bold px-2">General Information</legend>
+        <Input
+          id={"firstname"}
+          hasLabel
+          labelContent={"First Name"}
+          isRequired
+          type={"text"}
+          placeholder={"Sherlock"}
+          autoCompleteText={"give-name"}
+          stylingInputGroup="flex flex-col"
+          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+        />
 
-      <Input
-        id={"lastname"}
-        hasLabel
-        labelContent={"Last Name"}
-        isRequired
-        type={"text"}
-        placeholder={"Holmes"}
-        autoCompleteText={"family-name"}
-        stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
-      />
+        <Input
+          id={"lastname"}
+          hasLabel
+          labelContent={"Last Name"}
+          isRequired
+          type={"text"}
+          placeholder={"Holmes"}
+          autoCompleteText={"family-name"}
+          stylingInputGroup="flex flex-col"
+          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+        />
 
-      <Input
-        id={"birthdate"}
-        hasLabel
-        labelContent={"Date of Birth"}
-        isRequired
-        type={"date"}
-        autoCompleteText={"bday"}
-        stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
-      />
+        <Input
+          id={"birthdate"}
+          hasLabel
+          labelContent={"Date of Birth"}
+          isRequired
+          type={"date"}
+          autoCompleteText={"bday"}
+          stylingInputGroup="flex flex-col"
+          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+        />
+      </fieldset>
 
       {/* Address */}
-      <fieldset className="border-solid border-2 border-primary py-2 px-4">
-        <legend className="px-2">Address</legend>
+      <fieldset className="flex justify-between border-solid border-2 border-primary py-3 px-8 mt-10">
+        <legend className="text-lg font-bold px-2">
+          Address For Official Documents
+        </legend>
 
         <Input
           id={"street"}
@@ -117,7 +125,8 @@ function NewEmployeeForm(): JSX.Element {
           type={"text"}
           placeholder={"221B Baker Street"}
           autoCompleteText={"street-address"}
-          stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
+          stylingInputGroup="flex flex-col"
+          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
 
         <Input
@@ -127,7 +136,8 @@ function NewEmployeeForm(): JSX.Element {
           type={"text"}
           placeholder={"London"}
           autoCompleteText={"address-level2"}
-          stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
+          stylingInputGroup="flex flex-col"
+          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
 
         <Select
@@ -144,28 +154,33 @@ function NewEmployeeForm(): JSX.Element {
           type={"text"}
           placeholder={"NW1 6XE"}
           autoCompleteText={"postal-code"}
-          stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
+          stylingInputGroup="flex flex-col"
+          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
       </fieldset>
 
-      <Select
-        id={"departments"}
-        labelContent={"Department"}
-        isRequired
-        optionsList={DEPARTMENTS}
-        stylingSelectGroup="m-4"
-      />
+      <fieldset className="flex gap-20 border-solid border-2 border-primary py-3 px-8 mt-10">
+        <legend className="text-lg font-bold px-2">Employee Information</legend>
 
-      <Input
-        id={"startDate"}
-        hasLabel
-        labelContent={"Start Date"}
-        isRequired
-        type={"date"}
-        stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
-      />
+        <Select
+          id={"departments"}
+          labelContent={"Department"}
+          isRequired
+          optionsList={DEPARTMENTS}
+        />
 
-      <Button type={"submit"} extraStyling={"self-center"}>
+        <Input
+          id={"startDate"}
+          hasLabel
+          labelContent={"Start Date"}
+          isRequired
+          type={"date"}
+          stylingInputGroup="flex flex-col"
+          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+        />
+      </fieldset>
+
+      <Button type={"submit"} extraStyling={"self-center mt-12"}>
         Create Employee
       </Button>
     </form>

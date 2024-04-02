@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 
 // Router
-import routes from "@router/routes";
+import { routes } from "@router/routes";
 
 /**
  * Home Page

@@ -31,7 +31,7 @@ function CustomSelect({
   stylingSelectGroup,
 }: CustomSelectProps): JSX.Element {
   return (
-    <div className={`flex ${stylingSelectGroup}`}>
+    <div className={`flex flex-col ${stylingSelectGroup}`}>
       <label htmlFor={id} className="flex items-center">
         {labelContent}
         {isRequired && (
@@ -39,7 +39,12 @@ function CustomSelect({
         )}
       </label>
 
-      <select id={id} name={id} required={isRequired}>
+      <select
+        id={id}
+        name={id}
+        required={isRequired}
+        className="border border-solid border-slate-300 p-2 mt-2"
+      >
         {Children.toArray(
           optionsList.map((option) => (
             <option value={option.toString()}>{option.toString()}</option>
