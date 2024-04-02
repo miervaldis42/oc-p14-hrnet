@@ -1,9 +1,10 @@
 // React Icons Project List
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaStarOfLife } from "react-icons/fa6";
 
 // Types
 import { IconType } from "react-icons/lib";
-type IconNameTypes = "magnifier";
+type IconNameTypes = "magnifier" | "star";
 
 /**
  * @name iconLibrary
@@ -14,6 +15,7 @@ type IconNameTypes = "magnifier";
 
 const iconLibrary: { [key: string]: IconType } = {
   magnifier: FaMagnifyingGlass,
+  star: FaStarOfLife,
 };
 
 export type { IconNameTypes };

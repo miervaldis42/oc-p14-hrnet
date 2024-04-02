@@ -1,6 +1,9 @@
 // Imports
 import { Children } from "react";
 
+// Components
+import CustomIcon from "@components/Icon";
+
 // Types
 import { DepartmentType } from "@customTypes/departmentType";
 import { StateNameType } from "@customTypes/stateType";
@@ -8,6 +11,7 @@ interface CustomSelectProps {
   stylingSelectGroup?: string;
   id: string;
   labelContent: string;
+  isRequired?: boolean;
   optionsList: Array<StateNameType | DepartmentType>;
 }
 
@@ -20,15 +24,22 @@ interface CustomSelectProps {
  * @returns {JSX.Element}
  */
 function CustomSelect({
-  stylingSelectGroup,
   id,
   labelContent,
+  isRequired = false,
   optionsList,
+  stylingSelectGroup,
 }: CustomSelectProps): JSX.Element {
   return (
-    <div className={stylingSelectGroup}>
-      <label htmlFor={id}>{labelContent}</label>
-      <select name={id}>
+    <div className={`flex ${stylingSelectGroup}`}>
+      <label htmlFor={id} className="flex items-center">
+        {labelContent}
+        {isRequired && (
+          <CustomIcon name={"star"} styling={"text-[50%] text-red-500 ml-1"} />
+        )}
+      </label>
+
+      <select id={id} required={isRequired}>
         {Children.toArray(
           optionsList.map((option) => (
             <option value={option.toString().toLowerCase()}>

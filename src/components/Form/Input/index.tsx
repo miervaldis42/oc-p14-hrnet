@@ -9,6 +9,7 @@ type CustomInputPropsType = {
   idName: string;
   hasLabel?: boolean;
   labelContent?: string;
+  isRequired?: boolean;
   type: "text" | "number" | "date";
   placeholder?: string;
   autoCompleteText?:
@@ -41,6 +42,7 @@ function CustomInput({
   idName,
   hasLabel = false,
   labelContent = idName,
+  isRequired = false,
   type,
   placeholder,
   value,
@@ -55,12 +57,20 @@ function CustomInput({
 }: CustomInputPropsType) {
   return (
     <div className={stylingInputGroup}>
-      <label htmlFor={idName} className={hasLabel ? "visible" : "hidden"}>
+      <label
+        htmlFor={idName}
+        className={`${hasLabel ? "visible" : "hidden"} flex items-center`}
+      >
         {labelContent}
+        {isRequired && (
+          <CustomIcon name={"star"} styling={"text-[50%] text-red-500 ml-1"} />
+        )}
       </label>
+
       <input
         id={idName}
         type={type}
+        required={isRequired}
         placeholder={placeholder}
         value={value}
         onChange={onChangeHandler}

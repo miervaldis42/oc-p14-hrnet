@@ -7,6 +7,7 @@ interface ButtonPropsType {
   clickHandler?: MouseEventHandler<HTMLButtonElement> | (() => void);
   disabled?: boolean;
   styling?: string;
+  extraStyling?: string;
   children: ReactNode;
 }
 
@@ -23,6 +24,7 @@ function CustomButton({
   clickHandler,
   disabled,
   styling,
+  extraStyling,
   children,
 }: ButtonPropsType): JSX.Element {
   return (
@@ -33,7 +35,7 @@ function CustomButton({
       className={
         styling
           ? styling
-          : `w-fit text-white bg-primary rounded-lg drop-shadow-md py-2 px-4 mt-4 hover:font-bold hover:bg-blue-800 hover:translate-y-px`
+          : `w-fit text-white bg-primary rounded-lg drop-shadow-md py-2 px-4 mt-4 hover:font-bold hover:bg-blue-800 hover:translate-y-px ${extraStyling}`
       }
     >
       {children}

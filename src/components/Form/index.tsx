@@ -22,6 +22,7 @@ import DEPARTMENTS from "@constants/departmentList";
 
 // Types
 import { EmployeeType } from "@customTypes/employeeType";
+import { DepartmentType } from "@customTypes/departmentType";
 
 /**
  * @name NewEmployeeForm
@@ -40,6 +41,7 @@ function NewEmployeeForm(): JSX.Element {
     dispatch(add(newEmployee));
   };
 
+  // Form Actions
   const submitHandler: any = (event: ChangeEvent) => {
     event.preventDefault();
 
@@ -70,12 +72,13 @@ function NewEmployeeForm(): JSX.Element {
   };
 
   return (
-    <form onSubmit={submitHandler} className="flex flex-col items-center">
+    <form onSubmit={submitHandler} className="flex flex-col">
       {/* Employee Full Name */}
       <Input
         idName={"firstnameInput"}
-        hasLabel={true}
+        hasLabel
         labelContent={"First Name"}
+        isRequired
         type={"text"}
         placeholder={"Sherlock"}
         autoCompleteText={"give-name"}
@@ -84,8 +87,9 @@ function NewEmployeeForm(): JSX.Element {
 
       <Input
         idName={"lastnameInput"}
-        hasLabel={true}
+        hasLabel
         labelContent={"Last Name"}
+        isRequired
         type={"text"}
         placeholder={"Holmes"}
         autoCompleteText={"family-name"}
@@ -94,8 +98,9 @@ function NewEmployeeForm(): JSX.Element {
 
       <Input
         idName={"birthdateInput"}
-        hasLabel={true}
+        hasLabel
         labelContent={"Date of Birth"}
+        isRequired
         type={"date"}
         autoCompleteText={"bday"}
         stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 ml-2 mb-4"
@@ -107,7 +112,7 @@ function NewEmployeeForm(): JSX.Element {
 
         <Input
           idName={"streetInput"}
-          hasLabel={true}
+          hasLabel
           labelContent={"Street"}
           type={"text"}
           placeholder={"221B Baker Street"}
@@ -116,7 +121,7 @@ function NewEmployeeForm(): JSX.Element {
         />
 
         <Input
-          hasLabel={true}
+          hasLabel
           labelContent={"City"}
           idName={"cityInput"}
           type={"text"}
@@ -133,7 +138,7 @@ function NewEmployeeForm(): JSX.Element {
         />
 
         <Input
-          hasLabel={true}
+          hasLabel
           labelContent={"Zip Code"}
           idName={"zipcodeInput"}
           type={"text"}
@@ -146,19 +151,23 @@ function NewEmployeeForm(): JSX.Element {
       <Select
         id={"departments"}
         labelContent={"Department"}
+        isRequired
         optionsList={DEPARTMENTS}
-        stylingSelectGroup="mt-4"
+        stylingSelectGroup="m-4"
       />
 
       <Input
         idName={"startDateInput"}
-        hasLabel={true}
+        hasLabel
         labelContent={"Start Date"}
+        isRequired
         type={"date"}
         stylingInput="w-60 border-solid border border-slate-600 placeholder:italic placeholder:p-1 my-4 ml-2"
       />
 
-      <Button type={"submit"}>Create Employee</Button>
+      <Button type={"submit"} extraStyling={"self-center"}>
+        Create Employee
+      </Button>
     </form>
   );
 }
