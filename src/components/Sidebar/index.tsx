@@ -27,7 +27,7 @@ function Sidebar(): JSX.Element {
       aria-label="Website sidebar"
       className="min-h-screen w-44 flex flex-col justify-between items-center  text-white bg-primary shadow-[rgba(0,0,0,0.6)_2px_0px_5px_0px] p-4"
     >
-      {/* Logo & Active User */}
+      {/* Logo */}
       <Logo />
 
       {/* Navbar */}

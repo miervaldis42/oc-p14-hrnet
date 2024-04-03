@@ -1,5 +1,5 @@
 // Imports
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 
 // Components
 import ReduxProvider from "@store/ReduxProvider";
@@ -24,13 +24,13 @@ export default function RootLayout({
         <body
           className={`${ebGaramondFont.className} w-screen h-screen flex overflow-hidden`}
         >
-          <>
+          <Suspense>
             <Sidebar />
 
             <section className="w-full h-full px-16 py-6 overflow-y-auto">
               {children}
             </section>
-          </>
+          </Suspense>
         </body>
       </ReduxProvider>
     </html>
