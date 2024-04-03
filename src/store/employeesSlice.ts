@@ -32,7 +32,7 @@ const employeesListSlice = createSlice({
   name: "employeesListSlice",
   initialState,
   reducers: {
-    resetState: (state) => Object.assign(state, initialState),
+    resetState: () => initialState,
     add: (state, action: PayloadAction<EmployeeType>) => {
       state.push(action.payload);
     },

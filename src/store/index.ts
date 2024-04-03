@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 // Reducers
 import { employeesReducer } from "./employeesSlice";
+import { eventsReducer } from "./eventsSlice";
 
 /**
  * Store
@@ -11,6 +12,7 @@ import { employeesReducer } from "./employeesSlice";
 export const store = configureStore({
   reducer: {
     employees: employeesReducer,
+    events: eventsReducer,
   },
 });
 
