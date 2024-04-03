@@ -3,6 +3,7 @@
 // Redux
 import { useDispatch } from "react-redux";
 import { add } from "@store/employeesSlice";
+import { activateAlert } from "@store/eventsSlice";
 
 // Routing
 import { useRouter } from "next/navigation";
@@ -38,6 +39,9 @@ function NewEmployeeForm(): JSX.Element {
   const addNewEmployee = (newEmployee: EmployeeType) => {
     dispatch(add(newEmployee));
   };
+  const displayAnEvent = () => {
+    dispatch(activateAlert());
+  };
 
   /*
    * Form Actions
@@ -62,13 +66,14 @@ function NewEmployeeForm(): JSX.Element {
     };
 
     addNewEmployee(newEmployee);
+    displayAnEvent();
 
-    const employeeListPagePath = routes.employeeList.path;
-    const pathToEmployeeListPage =
-      typeof employeeListPagePath === "function"
-        ? employeeListPagePath()
-        : employeeListPagePath;
-    router.push(pathToEmployeeListPage);
+    // const employeeListPagePath = routes.employeeList.path;
+    // const pathToEmployeeListPage =
+    //   typeof employeeListPagePath === "function"
+    //     ? employeeListPagePath()
+    //     : employeeListPagePath;
+    // router.push(pathToEmployeeListPage);
   };
 
   return (
@@ -180,7 +185,7 @@ function NewEmployeeForm(): JSX.Element {
         />
       </fieldset>
 
-      <Button type={"submit"} extraStyling={"self-center mt-12"}>
+      <Button type={"submit"} extraStyling={"self-center mt-8"}>
         Create Employee
       </Button>
     </form>

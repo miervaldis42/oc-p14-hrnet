@@ -1,6 +1,7 @@
 // Components
 import DynamicHeading from "@components/DynamicHeading/index";
 import Form from "@components/Form";
+import Event from "@components/Event";
 
 /**
  * 'New Employee' Page
@@ -14,6 +15,8 @@ function Page(): JSX.Element {
       <DynamicHeading type="h2">New Employee</DynamicHeading>
 
       <Form />
+
+      <Event />
     </>
   );
 }
