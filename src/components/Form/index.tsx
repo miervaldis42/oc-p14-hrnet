@@ -7,7 +7,6 @@ import { activateAlert } from "@store/eventsSlice";
 
 // Routing
 import { useRouter } from "next/navigation";
-import { routes } from "@router/routes";
 
 // Components
 import Input from "./Input";
@@ -31,9 +30,6 @@ import { StateType } from "@/types/stateType";
  * @returns {JSX.Element}
  */
 function NewEmployeeForm(): JSX.Element {
-  // Routing
-  const router = useRouter();
-
   // Store
   const dispatch = useDispatch();
   const addNewEmployee = (newEmployee: EmployeeType) => {
@@ -51,8 +47,8 @@ function NewEmployeeForm(): JSX.Element {
     const newEmployee: EmployeeType = {
       firstname: formData.get("firstname"),
       lastname: formData.get("lastname"),
-      birthdate: new Date(formData.get("birthdate")),
-      startDate: new Date(formData.get("startDate")),
+      birthdate: formData.get("birthdate"),
+      startDate: formData.get("startDate"),
       address: {
         street: formData.get("street"),
         city: formData.get("city"),
@@ -67,13 +63,6 @@ function NewEmployeeForm(): JSX.Element {
 
     addNewEmployee(newEmployee);
     displayAnEvent();
-
-    // const employeeListPagePath = routes.employeeList.path;
-    // const pathToEmployeeListPage =
-    //   typeof employeeListPagePath === "function"
-    //     ? employeeListPagePath()
-    //     : employeeListPagePath;
-    // router.push(pathToEmployeeListPage);
   };
 
   return (
@@ -90,7 +79,7 @@ function NewEmployeeForm(): JSX.Element {
           placeholder={"Sherlock"}
           autoCompleteText={"give-name"}
           stylingInputGroup="flex flex-col"
-          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+          stylingInput="w-60 border border-solid border-slate-300 rounded-md placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
 
         <Input
@@ -102,7 +91,7 @@ function NewEmployeeForm(): JSX.Element {
           placeholder={"Holmes"}
           autoCompleteText={"family-name"}
           stylingInputGroup="flex flex-col"
-          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+          stylingInput="w-60 border border-solid border-slate-300 rounded-md placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
 
         <Input
@@ -113,7 +102,7 @@ function NewEmployeeForm(): JSX.Element {
           type={"date"}
           autoCompleteText={"bday"}
           stylingInputGroup="flex flex-col"
-          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+          stylingInput="w-60 border border-solid border-slate-300 rounded-md placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
       </fieldset>
 
@@ -131,7 +120,7 @@ function NewEmployeeForm(): JSX.Element {
           placeholder={"221B Baker Street"}
           autoCompleteText={"street-address"}
           stylingInputGroup="flex flex-col"
-          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+          stylingInput="w-60 border border-solid border-slate-300 rounded-md placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
 
         <Input
@@ -142,7 +131,7 @@ function NewEmployeeForm(): JSX.Element {
           placeholder={"London"}
           autoCompleteText={"address-level2"}
           stylingInputGroup="flex flex-col"
-          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+          stylingInput="w-60 border border-solid border-slate-300 rounded-md placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
 
         <Select
@@ -160,7 +149,7 @@ function NewEmployeeForm(): JSX.Element {
           placeholder={"NW1 6XE"}
           autoCompleteText={"postal-code"}
           stylingInputGroup="flex flex-col"
-          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+          stylingInput="w-60 border border-solid border-slate-300 rounded-md placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
       </fieldset>
 
@@ -181,7 +170,7 @@ function NewEmployeeForm(): JSX.Element {
           isRequired
           type={"date"}
           stylingInputGroup="flex flex-col"
-          stylingInput="w-60 border border-solid border-slate-300 placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
+          stylingInput="w-60 border border-solid border-slate-300 rounded-md placeholder:italic placeholder:p-1 p-2 mt-2 mb-4"
         />
       </fieldset>
 

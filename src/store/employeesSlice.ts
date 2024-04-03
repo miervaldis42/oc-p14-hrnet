@@ -5,24 +5,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { EmployeesType, EmployeeType } from "@customTypes/employeeType";
 
 // Initial State
-const initialState: EmployeesType = [
-  {
-    firstname: "Sherlock",
-    lastname: "Holmes",
-    birthdate: new Date(1854, 0, 6),
-    startDate: new Date(2024, 0, 1),
-    address: {
-      street: "221B Baker Street",
-      city: "London",
-      state: {
-        name: "Alabama",
-        abbreviation: "AL",
-      },
-      code: "NW16XE",
-    },
-    department: "Engineering",
-  },
-];
+const initialState: EmployeesType = [];
 
 /**
  * Employee Slice

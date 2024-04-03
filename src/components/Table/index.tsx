@@ -42,10 +42,9 @@ function Table() {
   const [tableData, setTableData] = useState(employees);
 
   // Formatting
-  const formatDate = (date: Date | null) => {
-    return !!date && typeof date === "object"
-      ? date.toLocaleDateString("fr-FR")
-      : "--/--/----";
+  const formatDate = (date: string) => {
+    const parts = date.split("-");
+    return `${parts[1]}-${parts[2]}-${parts[0]}`;
   };
 
   /*
@@ -120,47 +119,60 @@ function Table() {
     columnHelper.accessor((row) => row.firstname, {
       id: "firstname",
       header: () => <span>First Name</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        info.getValue()?.trim().length === 0 ? "---" : info.getValue(),
     }),
     columnHelper.accessor((row) => row.lastname, {
       id: "lastname",
       header: () => <span>Last Name</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        info.getValue()?.trim().length === 0 ? "---" : info.getValue(),
     }),
-    columnHelper.accessor((row) => formatDate(row.startDate), {
+    columnHelper.accessor((row) => row.startDate, {
       id: "startDate",
       header: () => <span>Start Date</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        !!info.getValue()
+          ? formatDate(info.getValue()!.toString())
+          : "--/--/----",
     }),
     columnHelper.accessor((row) => row.department, {
       id: "department",
       header: () => <span>Department</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        info.getValue()?.trim().length === 0 ? "---" : info.getValue(),
     }),
-    columnHelper.accessor((row) => formatDate(row.birthdate), {
+    columnHelper.accessor((row) => row.birthdate, {
       id: "birthdate",
       header: () => <span>Date of Birth</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        !!info.getValue()
+          ? formatDate(info.getValue()!.toString())
+          : "--/--/----",
     }),
     columnHelper.accessor((row) => row.address.street, {
       id: "street",
       header: () => <span>Street</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        info.getValue()?.trim().length === 0 ? "---" : info.getValue(),
     }),
     columnHelper.accessor((row) => row.address.city, {
       id: "city",
       header: () => <span>City</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        info.getValue()?.trim().length === 0 ? "---" : info.getValue(),
     }),
     columnHelper.accessor((row) => row.address.state?.abbreviation, {
       id: "state",
       header: () => <span>State</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        info.getValue()?.trim().length === 0 ? "---" : info.getValue(),
     }),
     columnHelper.accessor((row) => row.address.code, {
       id: "code",
       header: () => <span>Zip Code</span>,
-      cell: (info) => info.getValue(),
+      cell: (info) =>
+        info.getValue()?.trim().length === 0 ? "---" : info.getValue(),
     }),
   ];
 
@@ -196,17 +208,19 @@ function Table() {
           aria-label="Content displayed when no employees are found or created."
           className="flex flex-col justify-center items-center italic"
         >
-          <>
+          <div className="mt-4">
             <p>
               From our knowledge, your company does not have any employees...
             </p>
-            <p>But... Please free to add new employees when the time comes !</p>
-          </>
+            <p className="mt-2">
+              But... Please free to add new employees when the time comes !
+            </p>
+          </div>
 
           <Link
             href={toNewEmployeePage}
             aria-label="Go to 'New Employee' page to create a new employee"
-            className="w-fit text-white bg-primary rounded-lg shadow py-2 px-4 mt-4 hover:text-lg hover:font-bold hover:bg-blue-800"
+            className="w-fit text-white bg-primary rounded-lg shadow py-2 px-4 mt-8 hover:text-lg hover:font-bold hover:bg-blue-800"
           >
             Create a New Employee
           </Link>
@@ -243,7 +257,7 @@ function Table() {
               onClickHandler={searchHandler}
               stylingInputGroup={"w-auto h-auto flex justify-end items-center"}
               stylingInput={
-                "w-56 font-lg placeholder-opacity-50 shadow-inner border border-block rounded-l-md px-4 py-2"
+                "w-56 font-lg placeholder-opacity-50 border border-block rounded-l-md px-4 py-2"
               }
               hasButton={true}
               stylingButton={
