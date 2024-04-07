@@ -4,7 +4,6 @@
 import { ChangeEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import {
-  Table,
   useReactTable,
   createColumnHelper,
   flexRender,
@@ -328,43 +327,26 @@ function Table() {
             aria-label="Pagination action buttons & indicators."
             className="flex justify-between items-center mt-4 mb-6"
           >
-            <div
-              aria-label="Action buttons to move back and forth across the table pages."
-              className="flex gap-4"
-            >
-              <Button
-                type={"button"}
-                clickHandler={() => customTable.firstPage()}
-                disabled={!customTable.getCanPreviousPage()}
-                styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
-              >
-                {"<<"}
-              </Button>
-              <Button
-                type={"button"}
-                clickHandler={() => customTable.previousPage()}
-                disabled={!customTable.getCanPreviousPage()}
-                styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
-              >
-                {"<"}
-              </Button>
-              <Button
-                type={"button"}
-                clickHandler={() => customTable.nextPage()}
-                disabled={!customTable.getCanNextPage()}
-                styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
-              >
-                {">"}
-              </Button>
-              <Button
-                type={"button"}
-                clickHandler={() => customTable.lastPage()}
-                disabled={!customTable.getCanNextPage()}
-                styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
-              >
-                {">>"}
-              </Button>
-            </div>
+            {tableData.length === 0 && (
+              <p className="text-primary italic">
+                No data matches your search... Try with a broader keyword.
+              </p>
+            )}
+            {tableData.length > 0 && (
+              <div>
+                Displaying{" "}
+                {customTable.getState().pagination.pageIndex *
+                  customTable.getState().pagination.pageSize +
+                  1}{" "}
+                to{" "}
+                {Math.min(
+                  (customTable.getState().pagination.pageIndex + 1) *
+                    customTable.getState().pagination.pageSize,
+                  tableData.length
+                )}{" "}
+                of {tableData.length} entries
+              </div>
+            )}
 
             {customTable.getPageCount() > 1 && (
               <>
@@ -378,8 +360,27 @@ function Table() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-1">
-                  <p>Go to page: </p>
+                <div
+                  aria-label="Action buttons to move back and forth across the table pages."
+                  className="flex gap-4"
+                >
+                  <Button
+                    type={"button"}
+                    clickHandler={() => customTable.firstPage()}
+                    disabled={!customTable.getCanPreviousPage()}
+                    styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
+                  >
+                    {"<<"}
+                  </Button>
+                  <Button
+                    type={"button"}
+                    clickHandler={() => customTable.previousPage()}
+                    disabled={!customTable.getCanPreviousPage()}
+                    styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
+                  >
+                    {"<"}
+                  </Button>
+
                   <CustomInput
                     id={"pageNumber"}
                     type={"number"}
@@ -394,6 +395,23 @@ function Table() {
                     stylingInput="w-12 border shadow rounded p-1"
                     hasButton={false}
                   />
+
+                  <Button
+                    type={"button"}
+                    clickHandler={() => customTable.nextPage()}
+                    disabled={!customTable.getCanNextPage()}
+                    styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
+                  >
+                    {">"}
+                  </Button>
+                  <Button
+                    type={"button"}
+                    clickHandler={() => customTable.lastPage()}
+                    disabled={!customTable.getCanNextPage()}
+                    styling="border rounded p-1 hover:text-white hover:font-bold hover:bg-blue-800 disabled:invisible"
+                  >
+                    {">>"}
+                  </Button>
                 </div>
               </>
             )}
