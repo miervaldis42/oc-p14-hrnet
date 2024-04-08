@@ -3,10 +3,10 @@
 // Imports
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { desactivateAlert } from "@/store/eventsSlice";
+import { desactivateAlert } from "@store/eventsSlice";
 
 // Components
-import CustomModal from "@components/CustomModal";
+import CustomModal from "@miervaldis42/oc-p14-hrnet-package";
 import CustomIcon from "@components/Icon";
 import { StateType } from "@store/index";
 
@@ -33,6 +33,7 @@ function Event(): JSX.Element {
   return (
     <CustomModal
       isOpen={newEmployeeCreationEvent}
+      styling={"w-1/2 h-1/2"}
       hasCloseButton
       buttonContent={"Close"}
       buttonStyling={
