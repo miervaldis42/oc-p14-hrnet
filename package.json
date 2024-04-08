@@ -40,6 +40,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@miervaldis42/oc-p14-hrnet-package": "^1.0.0",
     "@reduxjs/toolkit": "^2.2.2",
     "@tanstack/react-table": "^8.15.0",
     "next": "14.1.0",
